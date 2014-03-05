@@ -9,6 +9,57 @@
         <h2 class="text-center"> {{ current_booking.activity }} </h2>
         <p class="text-center">{{ current_booking.activity.description }}</p>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Alternativ</h3>
+                </div>
+                <div class="panel-body">
+                    {% for option in current_booking.bookingoption_set.all %}
+                    <h3>{{ option.feature_option.feature }}</h3>
+                    <p>{{ option.feature_option }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Deltagare</h3>
+                </div>
+                <div class="panel-body">
+                    {% if p.adult != 0 %}
+                    <h3>Vuxna: {{ p.adult }}</h3>
+                    {% endif %}
+                    {% if p.youth != 0 %}
+                    <h3>Ungdomar: {{ p.youth }}</h3>
+                    {% endif %}
+                    {% if p.child != 0 %}
+                    <h3>Barn: {{ p.child }}</h3>
+                    {% endif %}
+                    {% if p.student != 0 %}
+                    <h3>Studenter: {{ p.student }}</h3>
+                    {% endif %}
+                    {% if p.senior != 0 %}
+                    <h3>Pensionärer: {{ p.senior }}</h3>
+                    {% endif %}
+                    <h3>Totalt antal deltagare: {{ total }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Info</h3>
+                </div>
+                <div class="panel-body">
+                    <h3>{{ current_booking.activity_date }}</h3>
+                    <h3>Pris: {{ current_booking.amount }} kr</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
