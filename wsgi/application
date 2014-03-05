@@ -3,6 +3,10 @@ import os
 import sys
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'intnet.settings'
+
+# Added because of postgres error
+os.environ['LD_LIBRARY_PATH'] = '/opt/rh/postgresql92/root/usr/lib64/'
+
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'intnet'))
 
 virtenv = os.environ['APPDIR'] + '/virtenv/'
