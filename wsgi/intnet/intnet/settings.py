@@ -8,14 +8,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-# a setting to determine whether we are running on OpenShift
-ON_OPENSHIFT = False
-if 'OPENSHIFT_REPO_DIR' in os.environ:
-    ON_OPENSHIFT = True
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import urlparse
+
+# a setting to determine whether we are running on OpenShift
+ON_OPENSHIFT = True
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    ON_OPENSHIFT = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
