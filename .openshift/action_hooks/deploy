@@ -4,4 +4,4 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-python manage.py syncdb --noinput
+python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py syncdb --noinput
