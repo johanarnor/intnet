@@ -94,10 +94,6 @@ if ON_OPENSHIFT:
             'PASSWORD': url.password,
             'HOST': url.hostname,
             'PORT': url.port,
-            'OPTIONS': {
-                'client_encoding': 'UTF8',
-                'autocommit': True,
-            },
         }
     }
 else:
