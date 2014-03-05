@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center"> {{activity.label}} </h2>
+    <p class="text-center">{{activity.description}}</p>
+
+    {% for feature in features %}
+        <h4>{{ feature.feature }}</h4>
+        <select class="form-control">
+            <option value="">Välj ett alternativ</option>
+            {% for option in feature.featureoption_set.all %}
+                <option> {{ option.option }} </option>
+            {% endfor %}
+        </select>
+    {% endfor %}
+</div>
+
+{% endblock %}

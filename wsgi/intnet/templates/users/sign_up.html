@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dirr Activities Login</title>
+    <title>Sign Up</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-4 col-xs-offset-4 alert alert-info" >
-                <p class="text-center">{{ failed_login }}</p>
+                <span class="label label-danger">{{ pw }}</span>
                 {% load crispy_forms_tags %}
                 {% crispy form %}
                 <br>

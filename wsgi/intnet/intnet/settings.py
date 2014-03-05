@@ -45,6 +45,7 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.DirrUser'
 
+LOGIN_URL = '/login/'
 
 # Application definition
 
@@ -56,6 +57,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'activities',
+    'bookings',
     'users',
     'main',
     'crispy_forms'
@@ -94,6 +97,10 @@ if ON_OPENSHIFT:
             'PASSWORD': url.password,
             'HOST': url.hostname,
             'PORT': url.port,
+            'OPTIONS': {
+                'client_encoding': 'UTF8',
+                'autocommit': True,
+            },
         }
     }
 else:

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ current_booking }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center"> {{ current_booking.activity }} </h2>
+        <p class="text-center">{{ current_booking.activity.description }}</p>
+    </div>
+</div>
+
+{% endblock %}
