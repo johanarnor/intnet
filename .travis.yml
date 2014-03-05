@@ -12,5 +12,5 @@ deploy:
   provider: openshift
   user: johan.arnor@gmail.com
   password: B9YEG69X97YzgoAd56V2
-  domain: intnet
+  domain: jarnor
   app: intnet
