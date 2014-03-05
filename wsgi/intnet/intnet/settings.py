@@ -11,11 +11,21 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import urlparse
+from unipath import Path
+from sys import path
 
 # a setting to determine whether we are running on OpenShift
 ON_OPENSHIFT = True
 if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
+
+# if ON_OPENSHIFT:
+#     SITE_ROOT = os.environ['OPENSHIFT_APP_NAME'] + "/intnet/"
+# else:
+SITE_ROOT = Path(__file__).ancestor(2)
+INTNET_ROOT = SITE_ROOT.child('dirr_activities')
+
+path.append(INTNET_ROOT)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -33,6 +43,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.DirrUser'
+
 
 # Application definition
 
@@ -43,7 +55,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users',
+    'main',
+    'crispy_forms'
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,6 +76,9 @@ ROOT_URLCONF = 'intnet.urls'
 
 WSGI_APPLICATION = 'intnet.wsgi.application'
 
+TEMPLATE_DIRS = (
+    SITE_ROOT.child('templates'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -68,11 +89,30 @@ if ON_OPENSHIFT:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['OPENSHIFT_APP_NAME'],
+            'NAME': 'intnet',
             'USER': url.username,
             'PASSWORD': url.password,
             'HOST': url.hostname,
             'PORT': url.port,
+            'OPTIONS': {
+                'client_encoding': 'UTF8',
+                'autocommit': True,
+            },
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'intnet',
+            'USER': 'developer',
+            'PASSWORD': 'developer',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+            'OPTIONS': {
+                'client_encoding': 'UTF8',
+                'autocommit': True,
+            },
         }
     }
 
