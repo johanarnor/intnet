@@ -6,5 +6,5 @@ setup(name='intnet',
       author='Your Name',
       author_email='example@example.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Django==1.6.2'],
+      install_requires=['Django==1.6.2', 'django-crispy-forms==1.4.0', 'Unipath==1.0'],
       )
