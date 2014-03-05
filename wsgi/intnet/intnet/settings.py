@@ -86,6 +86,6 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     # '/var/lib/openshift/5317194c50044674240000c5/app-root/runtime/repo/static/',
-    ('/var/lib/openshift/5317194c50044674240000c5/python/virtenv/lib/python2.7/site-packages/'
-     'Django-1.6.2-py2.7.egg/django/contrib/admin/static/'),
+    # ('/var/lib/openshift/5317194c50044674240000c5/python/virtenv/lib/python2.7/site-packages/'
+    #  'Django-1.6.2-py2.7.egg/django/contrib/admin/static/'),
 )
