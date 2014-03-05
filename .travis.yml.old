@@ -1,0 +1,13 @@
+language: python
+python:
+  - "2.7"
+
+install: pip install -r requirements.txt
+
+deploy:
+  provider: openshift
+  user: "YOU USER NAME"
+  password: "YOUR PASSWORD" # can be encrypted
+  domain: "YOUR OPENSHIFT DOMAIN"
+
+secure: "GhBvlogyPOg6k/7d3reHZ/7phh59HmMs1Af2V9/G+XAM2VGma76XemFAyTeRcDcJC4O5xHibD8+/ibq+Wee/twX4f0kGBTkeza1a/2ba8krJzJZ50/iVAYsAnmEdT89kMbDNFQqckM1IYsve6GD+vrqLF9mBKRVNsB/t2R+NwNE="
