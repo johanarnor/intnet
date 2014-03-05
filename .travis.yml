@@ -11,7 +11,6 @@ script: nosetests
 deploy:
   provider: openshift
   user: johan.arnor@gmail.com
-  password:
-    secure: W4jhNXR7SQKe7vPkbhLCC/pVlacohL2uR/jfcA629jec62cH7ScHJhi1F6InV7zMr3zjVmBAd8D/bWpL6hUYEgXP4m2hsdjsl8NqHCV3YlbTcu9tin3mbLUaNlpuyYkY1LFi73oK/Wop6QoKEvcNOxZO6pcTdTv9XqwVsYgp3nw=
+  password: B9YEG69X97YzgoAd56V2
   domain: intnet
   app: intnet

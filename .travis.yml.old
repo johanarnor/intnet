@@ -11,3 +11,5 @@ deploy:
   domain: "YOUR OPENSHIFT DOMAIN"
 
 secure: "GhBvlogyPOg6k/7d3reHZ/7phh59HmMs1Af2V9/G+XAM2VGma76XemFAyTeRcDcJC4O5xHibD8+/ibq+Wee/twX4f0kGBTkeza1a/2ba8krJzJZ50/iVAYsAnmEdT89kMbDNFQqckM1IYsve6GD+vrqLF9mBKRVNsB/t2R+NwNE="
+
+    secure: W4jhNXR7SQKe7vPkbhLCC/pVlacohL2uR/jfcA629jec62cH7ScHJhi1F6InV7zMr3zjVmBAd8D/bWpL6hUYEgXP4m2hsdjsl8NqHCV3YlbTcu9tin3mbLUaNlpuyYkY1LFi73oK/Wop6QoKEvcNOxZO6pcTdTv9XqwVsYgp3nw=
