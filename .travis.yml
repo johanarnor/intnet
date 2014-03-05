@@ -7,3 +7,11 @@ install:
   - pip install -r requirements.txt
 
 script: nosetests
+
+deploy:
+  provider: openshift
+  user: johan.arnor@gmail.com
+  password:
+    secure: "GhBvlogyPOg6k/7d3reHZ/7phh59HmMs1Af2V9/G+XAM2VGma76XemFAyTeRcDcJC4O5xHibD8+/ibq+Wee/twX4f0kGBTkeza1a/2ba8krJzJZ50/iVAYsAnmEdT89kMbDNFQqckM1IYsve6GD+vrqLF9mBKRVNsB/t2R+NwNE="
+  domain: intnet
+  app: intnet
