@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class="container">
+    {% load crispy_forms_tags %}
     <div class="row">
         <h2 class="text-center"> {{ current_booking.activity }} </h2>
         <p class="text-center">{{ current_booking.activity.description }}</p>
@@ -26,7 +27,7 @@
                         </div>
                     {% endfor %}
                         <div class="col-md-4">
-                            <a href="{% url 'bookings:booking' current_booking.pk %}" class="btn btn-info" role="button">Ändra</a>
+                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
                         </div>
                     </div>
                 </div>
@@ -58,9 +59,18 @@
                             <h4>Totalt antal deltagare: {{ total }}</h4>
                         </div>
                         <div class="col-md-4">
-                            <a href="{% url 'bookings:booking' current_booking.pk %}" class="btn btn-info" role="button">Ändra</a>
+                            {% if not people_form %}
+                                <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
+                            {% endif %}
                         </div>
                     </div>
+                    {% if people_form %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% crispy people_form %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -75,7 +85,7 @@
                             <h4>{{ current_booking.activity_date }}</h4>
                         </div>
                         <div class="col-md-4">
-                            <a href="{% url 'bookings:booking' current_booking.pk %}" class="btn btn-info" role="button">Ändra</a>
+                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
                         </div>
                     </div>
                     <div class="row">
