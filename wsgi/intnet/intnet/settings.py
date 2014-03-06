@@ -23,7 +23,7 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 #     SITE_ROOT = os.environ['OPENSHIFT_APP_NAME'] + "/intnet/"
 # else:
 SITE_ROOT = Path(__file__).ancestor(2)
-INTNET_ROOT = SITE_ROOT.child('dirr_activities')
+INTNET_ROOT = SITE_ROOT.child('intnet')
 
 path.append(INTNET_ROOT)
 
