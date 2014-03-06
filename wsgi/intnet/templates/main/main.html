@@ -30,7 +30,22 @@
                     <p>Kom igen, det blir kul</p>
                 </div>
             </div>
-            ...
+
+            <div class="item">
+                <img src="{% static 'pics/carousel/bungee.jpg' %}">
+                <div class="carousel-caption">
+                    <h1>Hoppa med rep runt fötterna!</h1>
+                    <p>Kom igen, det blir kul</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="{% static 'pics/carousel/parachute.jpg' %}">
+                <div class="carousel-caption">
+                    <h1>Hoppa fallskärm!</h1>
+                    <p>Kom igen, det blir kul</p>
+                </div>
+            </div>
         </div>
 
         <!-- Controls -->
@@ -42,6 +57,12 @@
         </a>
     </div>
 </div>
+
+<script type="text/javascript" >
+            $(document).ready(function() {
+        $('.carousel').carousel()
+            });
+</script>
 
 <div class="container">
     <h3>Aktiviteter</h3>
