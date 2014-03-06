@@ -1,16 +1,53 @@
 {% extends "base.html" %}
 
 {% block title %}Main{% endblock %}
+{% block head %}
+<style type="text/css">
+    .carousel-inner > .item > img {
+        margin: 0 auto;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
+
+<div id="my-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#my-carousel" data-slide-to="1"></li>
+        <li data-target="#my-carousel" data-slide-to="2"></li>
+    </ol>
+
+    {% load staticfiles %}
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="{% static 'pics/carousel/ren.jpg' %}">
+            <div class="carousel-caption">
+                <h1>Åååka sportbil!</h1>
+                <p>Kom igen, det blir kul</p>
+            </div>
+        </div>
+        ...
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#my-carousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
 
 <div class="container">
     <h3>Aktiviteter</h3>
     <dl>
-    {% for activity in activities %}
+        {% for activity in activities %}
         <a href="{% url 'activities:view_activity' activity.pk %}" class="list-group-item"> <dt>{{ activity.label }}</dt>
-        <dd>{{activity.description}}</dd></a>
-    {% endfor %}
+            <dd>{{activity.description}}</dd></a>
+        {% endfor %}
     </dl>
 </div>
 
