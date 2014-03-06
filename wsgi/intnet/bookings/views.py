@@ -48,7 +48,7 @@ def bookings(request):
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'bookings/bookings.html', {'bookings': bookings})
 
-
+@login_required
 def create_booking(request, activity_id):
     activity = Activity.objects.get(pk=activity_id)
     user = request.user
