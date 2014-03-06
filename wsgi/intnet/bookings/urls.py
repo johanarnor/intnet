@@ -5,4 +5,5 @@ from bookings import views
 urlpatterns = patterns(
     '',
     url(r'^(?P<booking_id>\d+)/$', views.booking, name='booking'),
+    url(r'^$', views.bookings, name='bookings'),
 )
