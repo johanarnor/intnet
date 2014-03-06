@@ -2,3 +2,4 @@ Django==1.6.2
 django-crispy-forms==1.4.0
 Unipath==1.0
 psycopg2==2.5
+south==0.8.4

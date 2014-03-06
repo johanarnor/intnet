@@ -25,6 +25,7 @@ class Activity(models.Model):
     price = models.ForeignKey('Price')
     creation_date = models.DateTimeField(auto_now_add=True)
     modification_date = models.DateTimeField(auto_now_add=True)
+    purchases = models.IntegerField(default=0)
 
 
 class Feature(models.Model):
