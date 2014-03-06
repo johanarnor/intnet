@@ -15,7 +15,7 @@ from unipath import Path
 from sys import path
 
 # a setting to determine whether we are running on OpenShift
-ON_OPENSHIFT = True
+ON_OPENSHIFT = False
 if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
 
