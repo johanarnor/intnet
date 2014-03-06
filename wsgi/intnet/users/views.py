@@ -58,7 +58,7 @@ def sign_up_view(request):
                 user.is_staff = False
                 user.is_superuser = False
                 user.save()
-                user.authenticate(form.cleaned_data['username'], form.cleaned_data['password1'])
+                user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
                 login(request, user)
         else:
             dictionary = {'form': form, 'pw': 'Some fields were left blank'}
