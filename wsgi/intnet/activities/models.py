@@ -28,7 +28,7 @@ class Activity(models.Model):
     purchases = models.IntegerField(default=0)
 
 
-class ActivityImage(models.Model):
+class CarouselImage(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
