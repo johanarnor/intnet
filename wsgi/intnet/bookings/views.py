@@ -66,7 +66,6 @@ def bookings(request):
     for booking in bookings:
         description_images.append(booking.activity.descriptionimage_set.all()[0].image.url)
 
-    print description_images
     bookings_images = zip(bookings, description_images)
 
     return render(request, 'bookings/bookings.html', {'bookings_images': bookings_images})

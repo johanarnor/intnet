@@ -22,35 +22,21 @@
         {% load staticfiles %}
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
+            {% for carousel_image in carousel_images %}
+            {% if forloop.first %}
             <div class="item active">
-                <img src="{{ carousel_images.0.image.url }}">
-                <div class="carousel-caption">
-                    <h1>{{ carousel_images.0.title }}</h1>
-                    <p>{{ carousel_images.0.description }}</p>
-                    <a href="{% url 'activities:view_activity' carousel_images.0.activity.pk %}"
-                           class="btn btn-primary" role="button">Boka nu!</a>
-                </div>
-            </div>
-
+            {% else %}
             <div class="item">
-                <img src="{{ carousel_images.1.image.url }}">
+            {% endif %}
+                <img src="{{ carousel_image.image.url }}">
                 <div class="carousel-caption">
-                    <h1>{{ carousel_images.1.title }}</h1>
-                    <p>{{ carousel_images.1.description }}</p>
-                    <a href="{% url 'activities:view_activity' carousel_images.1.activity.pk %}"
+                    <h1>{{ carousel_image.title }}</h1>
+                    <p>{{ carousel_image.description }}</p>
+                    <a href="{% url 'activities:view_activity' carousel_image.activity.pk %}"
                            class="btn btn-primary" role="button">Boka nu!</a>
                 </div>
             </div>
-
-            <div class="item">
-                <img src="{{ carousel_images.2.image.url }}">
-                <div class="carousel-caption">
-                    <h1>{{ carousel_images.2.title }}</h1>
-                    <p>{{ carousel_images.2.description }}</p>
-                    <a href="{% url 'activities:view_activity' carousel_images.2.activity.pk %}"
-                           class="btn btn-primary" role="button">Boka nu!</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 
         <!-- Controls -->
