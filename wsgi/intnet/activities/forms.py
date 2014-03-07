@@ -19,7 +19,7 @@ class FeatureForm(forms.Form, ):
                 options_list = options_list + [(option.option, option.option)]
 
             self.fields['feature' + str(counter)] = forms.ChoiceField(label=feature.feature, choices=options_list)
-            counter = counter + 1
+            counter += 1
 
 
 class ActivityForm(FeatureForm):
