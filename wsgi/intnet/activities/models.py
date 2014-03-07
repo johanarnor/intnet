@@ -28,6 +28,15 @@ class Activity(models.Model):
     purchases = models.IntegerField(default=0)
 
 
+class DescriptionImage(models.Model):
+
+    def __unicode__(self):
+        return unicode(self.activity)
+
+    image = models.FileField(upload_to='pics/activities')
+    activity = models.ForeignKey('Activity')
+
+
 class CarouselImage(models.Model):
 
     def __unicode__(self):

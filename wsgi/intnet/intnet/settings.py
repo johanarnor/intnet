@@ -130,6 +130,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Added to migrate activities between 0003 and 0004
+# SOUTH_AUTO_FREEZE_APP = True
+
 ########## STATIC FILE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
