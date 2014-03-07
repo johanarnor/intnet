@@ -130,17 +130,34 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
+########## STATIC FILE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
-# Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    # '/var/lib/openshift/5317194c50044674240000c5/app-root/runtime/repo/static/',
-    # ('/var/lib/openshift/5317194c50044674240000c5/python/virtenv/lib/python2.7/site-packages/'
-    #  'Django-1.6.2-py2.7.egg/django/contrib/admin/static/'),
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+if ON_OPENSHIFT:
+    STATICFILES_DIRS = (
+        os.environ['OPENSHIFT_APP_NAME'] + "/static"
+    )
+else:
+    STATICFILES_DIRS = (
+        '/home/developer/projects/intnet/wsgi/static',
+    )
+
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+########## END STATIC FILE CONFIGURATION
+
+########## MEDIA CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+if ON_OPENSHIFT:
+    MEDIA_ROOT = os.environ['OPENSHIFT_REPO_DIR'] + 'intnet/data'
+else:
+    MEDIA_ROOT = '/home/developer/projects/intnet/data'
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+MEDIA_URL = '/media/'
+########## END MEDIA CONFIGURATION

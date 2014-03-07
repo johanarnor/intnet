@@ -5,6 +5,5 @@ from activities.models import Activity
 
 
 def main(request):
-
     activities = Activity.objects.all()
     return render(request, 'main/main.html', {'activities': activities})

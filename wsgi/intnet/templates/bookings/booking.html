@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class="container">
+    {% load crispy_forms_tags %}
     <div class="row">
         <h2 class="text-center"> {{ current_booking.activity }} </h2>
         <p class="text-center">{{ current_booking.activity.description }}</p>
@@ -16,10 +17,19 @@
                     <h3 class="panel-title">Alternativ</h3>
                 </div>
                 <div class="panel-body">
+                    <div class="row">
                     {% for option in current_booking.bookingoption_set.all %}
-                    <h3>{{ option.feature_option.feature }}</h3>
-                    <p>{{ option.feature_option }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>{{ option.feature_option.feature }}</h4>
+                            <p>{{ option.feature_option }}</p>
+                        </div>
                     {% endfor %}
+                        <div class="col-md-4">
+                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,21 +40,37 @@
                 </div>
                 <div class="panel-body">
                     {% if p.adult != 0 %}
-                    <h3>Vuxna: {{ p.adult }}</h3>
+                    <h4>Vuxna: {{ p.adult }}</h4>
                     {% endif %}
                     {% if p.youth != 0 %}
-                    <h3>Ungdomar: {{ p.youth }}</h3>
+                    <h4>Ungdomar: {{ p.youth }}</h4>
                     {% endif %}
                     {% if p.child != 0 %}
-                    <h3>Barn: {{ p.child }}</h3>
+                    <h4>Barn: {{ p.child }}</h4>
                     {% endif %}
                     {% if p.student != 0 %}
-                    <h3>Studenter: {{ p.student }}</h3>
+                    <h4>Studenter: {{ p.student }}</h4>
                     {% endif %}
                     {% if p.senior != 0 %}
-                    <h3>Pensionärer: {{ p.senior }}</h3>
+                    <h4>Pensionärer: {{ p.senior }}</h4>
                     {% endif %}
-                    <h3>Totalt antal deltagare: {{ total }}</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Totalt antal deltagare: {{ total }}</h4>
+                        </div>
+                        <div class="col-md-4">
+                            {% if not people_form %}
+                                <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if people_form %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% crispy people_form %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -54,8 +80,19 @@
                     <h3 class="panel-title">Info</h3>
                 </div>
                 <div class="panel-body">
-                    <h3>{{ current_booking.activity_date }}</h3>
-                    <h3>Pris: {{ current_booking.amount }} kr</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>{{ current_booking.activity_date }}</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Pris: {{ current_booking.amount }} kr</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
