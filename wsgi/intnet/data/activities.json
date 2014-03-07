@@ -85,6 +85,38 @@
 },
 {
   "pk": 1, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/bungee-960x600.jpg", 
+    "activity": 3
+  }
+},
+{
+  "pk": 2, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/parachute_man-wallpaper-960x600.jpg", 
+    "activity": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/fast_food_burger-wallpaper-960x600.jpg", 
+    "activity": 4
+  }
+},
+{
+  "pk": 4, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/lamborghini_gallardo_lp560_white-wallpaper-960x600.jpg", 
+    "activity": 2
+  }
+},
+{
+  "pk": 1, 
   "model": "activities.carouselimage", 
   "fields": {
     "image": "pics/carousel/mclaren.jpg", 
