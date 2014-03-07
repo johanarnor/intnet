@@ -61,7 +61,15 @@ def change_booking(request, booking_id, change_id):
 @login_required
 def bookings(request):
     bookings = Booking.objects.filter(user=request.user)
-    return render(request, 'bookings/bookings.html', {'bookings': bookings})
+
+    description_images = []
+    for booking in bookings:
+        description_images.append(booking.activity.descriptionimage_set.all()[0].image.url)
+
+    print description_images
+    bookings_images = zip(bookings, description_images)
+
+    return render(request, 'bookings/bookings.html', {'bookings_images': bookings_images})
 
 @login_required
 def create_booking(request, activity_id):
