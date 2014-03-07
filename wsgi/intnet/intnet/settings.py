@@ -154,7 +154,7 @@ STATICFILES_FINDERS = (
 ########## MEDIA CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
 if ON_OPENSHIFT:
-    MEDIA_ROOT = os.environ['OPENSHIFT_REPO_DIR'] + 'intnet/data'
+    MEDIA_ROOT = os.environ['OPENSHIFT_REPO_DIR'] + 'data'
 else:
     MEDIA_ROOT = '/home/developer/projects/intnet/data'
 
