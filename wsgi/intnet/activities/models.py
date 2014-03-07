@@ -28,6 +28,17 @@ class Activity(models.Model):
     purchases = models.IntegerField(default=0)
 
 
+class ActivityImage(models.Model):
+
+    def __unicode__(self):
+        return unicode(self.title)
+
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.FileField(upload_to='pics/carousel')
+    activity = models.ForeignKey('Activity')
+
+
 class Feature(models.Model):
 
     def __unicode__(self):

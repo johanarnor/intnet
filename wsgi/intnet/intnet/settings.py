@@ -150,3 +150,14 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 ########## END STATIC FILE CONFIGURATION
+
+########## MEDIA CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+if ON_OPENSHIFT:
+    MEDIA_ROOT = os.environ['OPENSHIFT_REPO_DIR'] + 'intnet/data'
+else:
+    MEDIA_ROOT = '/home/developer/projects/intnet/data'
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+MEDIA_URL = '/media/'
+########## END MEDIA CONFIGURATION

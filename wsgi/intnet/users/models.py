@@ -11,6 +11,9 @@ class DirrUser(AbstractUser):
     p_code = models.IntegerField(max_length=5, null=True)
     city = models.ForeignKey('City', null=True)
 
+    # class Meta:
+    #     managed = False
+
 
 class City(models.Model):
 
