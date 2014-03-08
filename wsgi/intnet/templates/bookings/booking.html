@@ -91,7 +91,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <h4>{{ current_booking.activity_date }}</h4>
+                            <h4>{{ current_booking.activity_date.date }}</h4>
                         </div>
                         <div class="col-md-4">
                             <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>

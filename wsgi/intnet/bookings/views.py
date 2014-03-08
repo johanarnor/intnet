@@ -82,9 +82,16 @@ def create_booking(request, activity_id):
     seniors = int(request.POST['seniors'])
 
     amount = adults + youths + children + students + seniors
-    print request.POST['time']
-    date_time = datetime.datetime(2014, 04, 23, 10, 00)  # TODO
+
+    dateStrings = request.POST['date'].split("/")
+    month = dateStrings[0]
+    day = dateStrings[1]
+    year = dateStrings[2]
+
+    date_time = datetime.date(int(year), int(month), int(day))
     booking = Booking.objects.create(user=user, activity=activity, amount=amount, activity_date=date_time)
+    activity.purchases += 1
+    activity.save()
 
     peoples = People.objects.create(label=activity.label, booking=booking, adult=adults, youth=youths, child=children, student=students, senior=seniors)
 

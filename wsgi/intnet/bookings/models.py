@@ -11,7 +11,7 @@ class Booking(models.Model):
     user = models.ForeignKey(DirrUser)
     activity = models.ForeignKey(Activity)
     amount = models.IntegerField(max_length=31)
-    activity_date = models.DateTimeField()
+    activity_date = models.DateField()
     booking_date = models.DateTimeField(auto_now_add=True)
     modification_date = models.DateTimeField(auto_now=True)
     paid = models.DateTimeField(null=True)

@@ -30,7 +30,6 @@ class ActivityForm(FeatureForm):
 
         self.helper = FormHelper()
         self.fields['date'] = forms.DateField(label="Datum")
-        self.fields['time'] = forms.TimeField(label="Tid")
 
         self.fields['adults'] = forms.ChoiceField(label="Vuxna", choices=people_list)
         self.fields['youths'] = forms.ChoiceField(label="Ungdomar", choices=people_list)
@@ -55,9 +54,8 @@ class ActivityForm(FeatureForm):
                 Div('feature8', css_class="col-xs-12"),
                 Div('feature9', css_class="col-xs-12"),
                 Div('feature10', css_class="col-xs-12"),
+                Div('date'),
             ),
-            Div('date', css_class="datepicker"),
-            Div('time'),
             Div(
                 Div('adults', css_class="col-xs-2"),
                 Div('youths', css_class="col-xs-2"),
@@ -66,6 +64,7 @@ class ActivityForm(FeatureForm):
                 Div('seniors', css_class="col-xs-2"),
                 css_class="row"
             ),
+            Div('book'),
         )
 
 
