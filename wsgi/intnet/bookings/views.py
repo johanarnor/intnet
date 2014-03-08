@@ -91,10 +91,11 @@ def bookings(request):
 def create_booking(request, activity_id):
     activity = Activity.objects.get(pk=activity_id)
     features = activity.feature_set.all()
+    prices = activity.price
 
-    if not ActivityForm(request.POST, features=features, activity=activity).is_valid():
-        print "fel"
-        return HttpResponseRedirect(reverse('activities:view_activity', args=(activity_id,)))
+    form = ActivityForm(request.POST, features=features, activity=activity)
+    if not form.is_valid():
+        return render(request, 'activities/main.html', {'form': form, 'prices': prices})
 
     user = request.user
 
