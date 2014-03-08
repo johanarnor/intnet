@@ -2,7 +2,7 @@ import datetime
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from bookings.forms import PeopleForm
+from bookings.forms import PeopleForm, FeatureForm
 from django.contrib.auth.decorators import login_required
 from bookings.models import Booking, People, BookingOption
 from activities.models import Activity, FeatureOption
@@ -19,6 +19,17 @@ def booking(request, booking_id):
         price = current_booking.activity.price
         current_booking.amount = p.adult*price.adult + p.youth*price.youth + p.child*price.child + p.student*price.student + p.senior*price.senior
         current_booking.save()
+    elif request.method == 'POST' and 'edit_features' in request.POST:
+        current_booking = Booking.objects.get(pk=booking_id)
+        features = current_booking.activity.feature_set.all()
+        old_options = BookingOption.objects.filter(booking=current_booking)
+        old_options.delete()
+        i = 1
+        for feature in features:
+            option = FeatureOption.objects.get(option=request.POST['feature' + str(i)])
+            BookingOption.objects.create(booking=current_booking, feature_option=option)
+            i += 1
+
     current_booking = Booking.objects.get(pk=booking_id)
     people = current_booking.people_set.all()
     p = people[0]
@@ -32,10 +43,14 @@ def change_booking(request, booking_id, change_id):
     people = current_booking.people_set.all()
     p = people[0]
     total = p.senior + p.adult + p.youth + p.child + p.student
-    if change_id == 1:
-        form = PeopleForm(instance=p, booking=current_booking)
-        return render(request, 'bookings/booking.html', {'current_booking': current_booking, 'p': p, 'people_form': form, 'total': total})
-    elif change_id == 2:
+    print change_id
+    if change_id == '1':
+        print 'feature'
+        features = current_booking.activity.feature_set.all()
+        form = FeatureForm(booking=current_booking, features=features)
+        return render(request, 'bookings/booking.html', {'current_booking': current_booking, 'p': p, 'feature_form': form, 'total': total})
+    elif change_id == '2':
+        print 'people'
         form = PeopleForm(instance=p, booking=current_booking)
         return render(request, 'bookings/booking.html', {'current_booking': current_booking, 'p': p, 'people_form': form, 'total': total})
     else:
@@ -46,7 +61,14 @@ def change_booking(request, booking_id, change_id):
 @login_required
 def bookings(request):
     bookings = Booking.objects.filter(user=request.user)
-    return render(request, 'bookings/bookings.html', {'bookings': bookings})
+
+    description_images = []
+    for booking in bookings:
+        description_images.append(booking.activity.descriptionimage_set.all()[0].image.url)
+
+    bookings_images = zip(bookings, description_images)
+
+    return render(request, 'bookings/bookings.html', {'bookings_images': bookings_images})
 
 @login_required
 def create_booking(request, activity_id):
@@ -60,6 +82,7 @@ def create_booking(request, activity_id):
     seniors = int(request.POST['seniors'])
 
     amount = adults + youths + children + students + seniors
+    print request.POST['time']
     date_time = datetime.datetime(2014, 04, 23, 10, 00)  # TODO
     booking = Booking.objects.create(user=user, activity=activity, amount=amount, activity_date=date_time)
 

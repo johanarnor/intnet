@@ -27,9 +27,18 @@
                         </div>
                     {% endfor %}
                         <div class="col-md-4">
-                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
+                            {% if not feature_form %}
+                                <a href="{% url 'bookings:change_booking' current_booking.pk 1 %}" class="btn btn-info" role="button">Ändra</a>
+                            {% endif %}
                         </div>
                     </div>
+                    {% if feature_form %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% crispy feature_form %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
