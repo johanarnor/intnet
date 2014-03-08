@@ -103,3 +103,10 @@ def create_booking(request, activity_id):
         i = i + 1
 
     return HttpResponseRedirect(reverse('bookings:booking', args=(booking.pk,)))
+
+
+def cancel_booking(request, booking_id):
+    booking = Booking.objects.get(pk=booking_id)
+    booking.people_set.all().delete()
+    booking.delete()
+    return HttpResponseRedirect(reverse('bookings:bookings'))
