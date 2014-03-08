@@ -27,21 +27,21 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Prislista</h3>
             </div>
-            <ul>
+            <ul class="list-group">
                 {% if prices.adult %}
-                <li>Vuxen: {{ prices.adult }}</li>
+                <li class="list-group-item">Vuxen: {{ prices.adult }}</li>
                 {% endif %}
                 {% if prices.youth %}
-                <li>Ungdom: {{ prices.youth }}</li>
+                <li class="list-group-item">Ungdom: {{ prices.youth }}</li>
                 {% endif %}
                 {% if prices.child %}
-                <li>Barn: {{ prices.child }}</li>
+                <li class="list-group-item">Barn: {{ prices.child }}</li>
                 {% endif %}
                 {% if prices.student %}
-                <li>Student: {{ prices.student }}</li>
+                <li class="list-group-item">Student: {{ prices.student }}</li>
                 {% endif %}
                 {% if prices.senior %}
-                <li>Pensionär: {{ prices.senior }}</li>
+                <li class="list-group-item">Pensionär: {{ prices.senior }}</li>
                 {% endif %}
             </ul>
 
