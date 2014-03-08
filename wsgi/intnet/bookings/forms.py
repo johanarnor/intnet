@@ -30,7 +30,7 @@ class FeatureForm(forms.Form):
         self.helper.form_method = 'POST'
         counter = 1
         for feature in features:
-            options_list = [("", "Välj ett alternativ")]
+            options_list = []
             for option in feature.featureoption_set.all():
                 options_list = options_list + [(option.option, option.option)]
 
