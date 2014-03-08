@@ -61,3 +61,18 @@ class PeopleForm(forms.ModelForm):
 
     class Meta:
         model = People
+
+
+class DateForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        booking = kwargs.pop('booking')
+        super(DateForm, self).__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_action = reverse('bookings:booking', args=(booking.pk,))
+        self.helper.form_method = 'POST'
+        self.fields['date'] = forms.DateField(label="Datum")
+        self.helper.layout = Layout(
+            'date',
+            Submit('edit_date', 'Spara', css_class='btn btn-success')
+        )

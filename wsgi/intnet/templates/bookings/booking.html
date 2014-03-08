@@ -93,19 +93,33 @@
                         <div class="col-md-8">
                             <h4>{{ current_booking.activity_date.date }}</h4>
                         </div>
-                        <div class="col-md-4">
-                            <a href="{% url 'bookings:change_booking' current_booking.pk 2 %}" class="btn btn-info" role="button">Ändra</a>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <h4>Pris: {{ current_booking.amount }} kr</h4>
                         </div>
+                        <div class="col-md-4">
+                            {% if not date_form %}
+                                <a href="{% url 'bookings:change_booking' current_booking.pk 3 %}" class="btn btn-info" role="button">Ändra</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if date_form %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% crispy date_form %}
+                        </div>
+                    </div>
+                    {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">$(function() {
+    $( "#id_date" ).datepicker();
+  });</script>
 
 {% endblock %}

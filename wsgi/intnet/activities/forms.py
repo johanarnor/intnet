@@ -15,7 +15,7 @@ class FeatureForm(forms.Form, ):
         self.helper.form_id = 'features'
         counter = 1
         for feature in features:
-            options_list = [("", "Välj ett alternativ")]
+            options_list = []
             for option in feature.featureoption_set.all():
                 options_list = options_list + [(option.option, option.option)]
 
@@ -30,7 +30,7 @@ class ActivityForm(FeatureForm):
         super(ActivityForm, self).__init__(*args, **kwargs)
 
         self.helper = FormHelper()
-        self.fields['date'] = forms.DateField(label="Datum")
+        self.fields['date'] = forms.DateField(label="Datum", required=True)
 
         self.fields['adults'] = forms.ChoiceField(label="Vuxna", choices=people_list)
         self.fields['youths'] = forms.ChoiceField(label="Ungdomar", choices=people_list)
