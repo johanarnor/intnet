@@ -82,6 +82,7 @@ def create_booking(request, activity_id):
     seniors = int(request.POST['seniors'])
 
     amount = adults + youths + children + students + seniors
+    print request.POST['time']
     date_time = datetime.datetime(2014, 04, 23, 10, 00)  # TODO
     booking = Booking.objects.create(user=user, activity=activity, amount=amount, activity_date=date_time)
 
