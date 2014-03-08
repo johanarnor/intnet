@@ -13,12 +13,13 @@ def booking(request, booking_id):
     if request.method == 'POST' and 'adult' in request.POST:
         current_booking = Booking.objects.get(pk=booking_id)
         form = PeopleForm(request.POST, booking=current_booking)
-        form.save()
-        people = current_booking.people_set.all()
-        p = people[0]
-        price = current_booking.activity.price
-        current_booking.amount = p.adult*price.adult + p.youth*price.youth + p.child*price.child + p.student*price.student + p.senior*price.senior
-        current_booking.save()
+        if (form.is_valid):
+            form.save()
+            people = current_booking.people_set.all()
+            p = people[0]
+            price = current_booking.activity.price
+            current_booking.amount = p.adult*price.adult + p.youth*price.youth + p.child*price.child + p.student*price.student + p.senior*price.senior
+            current_booking.save()
     elif request.method == 'POST' and 'edit_features' in request.POST:
         current_booking = Booking.objects.get(pk=booking_id)
         features = current_booking.activity.feature_set.all()

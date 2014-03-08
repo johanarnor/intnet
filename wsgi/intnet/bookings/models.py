@@ -33,8 +33,8 @@ class People(models.Model):
 
     label = models.CharField(max_length=255)
     booking = models.ForeignKey('Booking')
-    adult = models.IntegerField(null=True)
-    youth = models.IntegerField(null=True)
-    child = models.IntegerField(null=True)
-    student = models.IntegerField(null=True)
-    senior = models.IntegerField(null=True)
+    adult = models.PositiveIntegerField(null=True)
+    youth = models.PositiveIntegerField(null=True)
+    child = models.PositiveIntegerField(null=True)
+    student = models.PositiveIntegerField(null=True)
+    senior = models.PositiveIntegerField(null=True)
