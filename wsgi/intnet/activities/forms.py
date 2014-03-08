@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*
+from crispy_forms.bootstrap import StrictButton
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field, Fieldset, Div
@@ -41,7 +42,6 @@ class ActivityForm(FeatureForm):
         self.helper.label_class="control-label"
         self.helper.form_method="POST"
         self.helper.form_action = reverse('bookings:create_booking', args=(activity.pk,))
-        self.helper.add_input(Submit('book', 'Boka', css_class='btn btn-default'))
         self.helper.layout = Layout(
             Div(
                 Div('feature1', css_class="col-xs-12"),
@@ -54,7 +54,7 @@ class ActivityForm(FeatureForm):
                 Div('feature8', css_class="col-xs-12"),
                 Div('feature9', css_class="col-xs-12"),
                 Div('feature10', css_class="col-xs-12"),
-                Div('date'),
+                Div('date', css_class="col-xs-12"),
             ),
             Div(
                 Div('adults', css_class="col-xs-2"),
@@ -62,9 +62,11 @@ class ActivityForm(FeatureForm):
                 Div('children', css_class="col-xs-2"),
                 Div('students', css_class="col-xs-2"),
                 Div('seniors', css_class="col-xs-2"),
-                css_class="row"
+                css_class="row col-xs-12"
             ),
-            Div('book'),
+            Div(
+                Submit('book', 'Boka', css_class="btn btn-default"),
+            ),
         )
 
 
