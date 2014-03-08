@@ -49,14 +49,19 @@ class PeopleForm(forms.ModelForm):
         self.helper.form_action = reverse('bookings:booking', args=(booking.pk, ))
         self.helper.form_method = 'POST'
         self.helper.add_input(Submit('edit_people', 'Spara', css_class='btn btn-success'))
+        self.fields['adult'].label = "Vuxna"
+        self.fields['youth'].label = "Ungdomar"
+        self.fields['child'].label = "Barn"
+        self.fields['student'].label = "Studenter"
+        self.fields['senior'].label = "Pensionärer"
         self.helper.layout = Layout(
             Field('label', type="hidden"),
             Field('booking', type="hidden"),
-            Field('adult', label="Vuxna"),
-            Field('youth', label="Ungdomar"),
-            Field('child', label="Barn"),
-            Field('student', label="Studenter"),
-            Field('senior', label="Pensionärer"),
+            'adult',
+            'youth',
+            'child',
+            'student',
+            'senior',
         )
 
     class Meta:
