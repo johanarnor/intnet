@@ -39,7 +39,7 @@
   "pk": 1, 
   "model": "activities.activity", 
   "fields": {
-    "purchases": 0, 
+    "purchases": 90, 
     "description": "Hoppa fallsk\u00e4rm fr\u00e5n ett flygplan med eller utan fallsk\u00e4rm.", 
     "modification_date": "2014-03-05T14:15:57.559Z", 
     "price": 1, 
@@ -51,7 +51,7 @@
   "pk": 2, 
   "model": "activities.activity", 
   "fields": {
-    "purchases": 3, 
+    "purchases": 20, 
     "description": "Hyr en sportbil fr\u00e5n Porshe, Ferrarri, McLaren osv\r\nF\u00e4rgen kan ocks\u00e5 ha betydelse.", 
     "modification_date": "2014-03-05T14:18:15.295Z", 
     "price": 2, 
@@ -63,7 +63,7 @@
   "pk": 3, 
   "model": "activities.activity", 
   "fields": {
-    "purchases": 0, 
+    "purchases": 10, 
     "description": "Hoppa mot marken med n\u00e5gon form av lina i anklarna och hoppas att den h\u00e5ller.", 
     "modification_date": "2014-03-05T14:20:05.280Z", 
     "price": 3, 
@@ -75,12 +75,36 @@
   "pk": 4, 
   "model": "activities.activity", 
   "fields": {
-    "purchases": 2, 
+    "purchases": 4, 
     "description": "Ha det mysigt med din k\u00e4resta. \u00c4r mat. Drick vin. Var n\u00f6jd.", 
     "modification_date": "2014-03-07T08:04:40.928Z", 
     "price": 2, 
     "creation_date": "2014-03-07T08:04:40.928Z", 
     "label": "Mysig middag"
+  }
+},
+{
+  "pk": 5, 
+  "model": "activities.activity", 
+  "fields": {
+    "purchases": 0, 
+    "description": "Unna dig en lyxig spa weekend d\u00e4r dina muslker bli lika m\u00f6ra som en h\u00e4ngm\u00f6rad oxfil\u00e9.", 
+    "modification_date": "2014-03-08T10:55:59.971Z", 
+    "price": 2, 
+    "creation_date": "2014-03-08T10:55:59.971Z", 
+    "label": "Spa & Relax"
+  }
+},
+{
+  "pk": 6, 
+  "model": "activities.activity", 
+  "fields": {
+    "purchases": 30, 
+    "description": "Bara fantasin s\u00e4tter gr\u00e4nserna! Flyg \u00f6ver vattnet som en f\u00e5gel och dyk som en delfin.", 
+    "modification_date": "2014-03-08T11:06:32.459Z", 
+    "price": 3, 
+    "creation_date": "2014-03-08T11:06:32.459Z", 
+    "label": "Flyboard"
   }
 },
 {
@@ -113,6 +137,22 @@
   "fields": {
     "image": "pics/activities/lamborghini_gallardo_lp560_white-wallpaper-960x600.jpg", 
     "activity": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/Spa-Stones-Desktop-01-600x960.jpg", 
+    "activity": 5
+  }
+},
+{
+  "pk": 6, 
+  "model": "activities.descriptionimage", 
+  "fields": {
+    "image": "pics/activities/flyboard_desc.jpg", 
+    "activity": 6
   }
 },
 {
@@ -153,6 +193,26 @@
     "activity": 4, 
     "description": "Ha det mysigt med din k\u00e4resta. \u00c4r mat. Drick vin. Var n\u00f6jd.", 
     "title": "Mysig middag"
+  }
+},
+{
+  "pk": 5, 
+  "model": "activities.carouselimage", 
+  "fields": {
+    "image": "pics/carousel/spa_carousel.jpg", 
+    "activity": 5, 
+    "description": "Kom igen, det blir kul!", 
+    "title": "Spa & Relax"
+  }
+},
+{
+  "pk": 6, 
+  "model": "activities.carouselimage", 
+  "fields": {
+    "image": "pics/carousel/flyboard_carousel.jpg", 
+    "activity": 6, 
+    "description": "Hoppa som en delfin (som sitter fast i en vattenskoter)", 
+    "title": "Flyboard!"
   }
 },
 {
