@@ -21,7 +21,7 @@
 
         {% load staticfiles %}
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="border-radius: 7px;">
             {% for carousel_image in carousel_images %}
             {% if forloop.first %}
             <div class="item active">
@@ -40,10 +40,10 @@
         </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+        <a style="border-radius: 7px;" class="left carousel-control" href="#my-carousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="right carousel-control" href="#my-carousel" data-slide="next">
+        <a style="border-radius: 7px;" class="right carousel-control" href="#my-carousel" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
