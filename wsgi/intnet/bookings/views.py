@@ -15,7 +15,7 @@ def booking(request, booking_id):
     if request.method == 'POST' and 'adult' in request.POST:
         current_booking = Booking.objects.get(pk=booking_id)
         form = PeopleForm(request.POST, booking=current_booking)
-        if (form.is_valid):
+        if form.is_valid():
             form.save()
             people = current_booking.people_set.all()
             p = people[0]
