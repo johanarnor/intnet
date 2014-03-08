@@ -52,11 +52,11 @@ class PeopleForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('label', type="hidden"),
             Field('booking', type="hidden"),
-            'adult',
-            'youth',
-            'child',
-            'student',
-            'senior',
+            Field('adult', label="Vuxna"),
+            Field('youth', label="Ungdomar"),
+            Field('child', label="Barn"),
+            Field('student', label="Studenter"),
+            Field('senior', label="Pensionärer"),
         )
 
     class Meta:
