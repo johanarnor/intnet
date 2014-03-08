@@ -24,10 +24,10 @@ class LoginForm(forms.Form):
         self.helper.add_input(Submit('login', 'Login', css_class='btn btn-default'))
         self.helper.layout = Layout(
             Fieldset("Login",
-                'username',
-                'password',
-                Field('next_url', type="hidden")
-            ),
+                     'username',
+                     'password',
+                     Field('next_url', type="hidden"),
+                     )
         )
 
 
@@ -45,3 +45,13 @@ class SignUpForm(forms.ModelForm):
         model = DirrUser
         exclude = ['password', 'groups', 'is_superuser', 'is_staff', 'is_active', 'last_login', 'user_permissions', 'date_joined']
 
+
+class ProfileForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_action = 'users:save_user'
+    helper.form_method = 'POST'
+    helper.add_input(Submit('save_user', 'Save', css_class='btn btn-success'))
+
+    class Meta:
+        model = DirrUser
+        exclude = ['username', 'password', 'groups', 'is_superuser', 'is_staff', 'is_active', 'last_login', 'user_permissions', 'date_joined']

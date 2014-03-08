@@ -1,6 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render
-from users.forms import LoginForm, SignUpForm
+from users.forms import LoginForm, SignUpForm, ProfileForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate
@@ -64,4 +64,30 @@ def sign_up_view(request):
             dictionary = {'form': form, 'pw': 'Some fields were left blank'}
             return render(request, 'users/sign_up.html', dictionary)
         return HttpResponseRedirect(reverse('main:main'))
+
+
+def profile_view(request):
+    form = ProfileForm(instance=request.user)
+    return render(request, 'users/profile.html', {'form': form})
+
+
+def save_user_view(request):
+    form = ProfileForm(request.POST)
+    if form.is_valid():
+        user = request.user
+        user.email = form.cleaned_data['email']
+        user.first_name = form.cleaned_data['first_name']
+        user.last_name = form.cleaned_data['last_name']
+        user.last_name = form.cleaned_data['last_name']
+        user.phone_nr = form.cleaned_data['phone_nr']
+        user.address = form.cleaned_data['address']
+        user.p_code = form.cleaned_data['p_code']
+        user.city = form.cleaned_data['city']
+        user.save()
+    else:
+        dictionary = {'form': form}
+        return render(request, 'users/profile.html', dictionary)
+
+    return HttpResponseRedirect(reverse('main:main'))
+
 
