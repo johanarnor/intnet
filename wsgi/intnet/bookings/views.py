@@ -10,6 +10,8 @@ from activities.models import Activity, FeatureOption
 
 @login_required
 def booking(request, booking_id):
+    if Booking.objects.get(pk=booking_id).user != request.user:
+        return HttpResponseRedirect(reverse('main:main'))
     if request.method == 'POST' and 'adult' in request.POST:
         current_booking = Booking.objects.get(pk=booking_id)
         form = PeopleForm(request.POST, booking=current_booking)
