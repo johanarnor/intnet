@@ -31,12 +31,17 @@ def booking(request, booking_id):
         old_options.delete()
         i = 1
         for feature in features:
-            option = FeatureOption.objects.get(option=request.POST['feature' + str(i)])
+            option = feature.featureoption_set.get(option=request.POST['feature' + str(i)])
+            # option = FeatureOption.objects.get(option=request.POST['feature' + str(i)])
             BookingOption.objects.create(booking=current_booking, feature_option=option)
             i += 1
     elif request.method == 'POST' and 'edit_date' in request.POST:
         current_booking = Booking.objects.get(pk=booking_id)
-        print 'edit-date'
+        date_form = DateForm(request.POST, booking=current_booking)
+        if not date_form.is_valid():
+            return HttpResponseRedirect(reverse('bookings:change_booking', args=(booking_id, 3,)))
+            # return render(request, 'activities/main.html', {'form': form, 'prices': prices})
+
         dateStrings = request.POST['date'].split("/")
         month = dateStrings[0]
         day = dateStrings[1]
@@ -105,7 +110,9 @@ def create_booking(request, activity_id):
     students = int(request.POST['students'])
     seniors = int(request.POST['seniors'])
 
-    amount = adults + youths + children + students + seniors
+    amount = adults*prices.adult + youths*prices.youth + children*prices.child + \
+             students*prices.student + seniors*prices.senior
+
 
     dateStrings = request.POST['date'].split("/")
     month = dateStrings[0]
